@@ -16,16 +16,21 @@ RETURNS Nvarchar(1000)
 AS 
 BEGIN
 
-DECLARE @Output Nvarchar(1000)
+DECLARE @FunctionOutput Nvarchar(1000)
 
-select @Output = SUBSTRING (StudentCardNumber,1,2) + '-' + LEFT(FirstName,1) + '.' + LastName
+select @FunctionOutput = REPLACE (StudentCardNumber,'sc', ' ') + '-' + LEFT(FirstName,1) + '.' + LastName
 from dbo.Student
 where id = @StudentId
 
-RETURN @Output
+RETURN @FunctionOutput
 
 END
-GO
+
+SELECT *, dbo.fn_FormatStudentName (id) as FunctionOutput
+FROM dbo.Student
+go
+
+
 
 
 

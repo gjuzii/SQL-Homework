@@ -29,16 +29,16 @@ GO
 --Declare temp table that will contain LastName and EnrolledDate columnsq
 
 
-CREATE TABLE #TempStudentTable21
+CREATE TABLE #TempTable
 (LastNameTemp nvarchar (50), EnrolledDateTemp date)
 
 --Fill the temp table with all Male students having First Name  starting with ‘A’
-INSERT INTO #TempStudentTable21
+INSERT INTO #TempTable
 SELECT LastName, EnrolledDate
 FROM dbo.Student
 WHERE Gender = 'M' and FirstName like 'A%'
 
-select * from #TempStudentTable21
+SELECT * from #TempTable
 GO
 --Retrieve  the students  from the  table which last name  is with 7 characters
 SELECT *
